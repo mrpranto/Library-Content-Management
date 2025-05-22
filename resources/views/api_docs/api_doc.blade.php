@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>POS Woocommerce api documentation</title>
+    <title>Library Content Management api documentation</title>
     <link rel="stylesheet" type="text/css" href="/api_doc/swagger-ui.css"/>
     <link rel="icon" type="image/png" href="/api_doc/favicon-32x32.png" sizes="32x32"/>
     <link rel="icon" type="image/png" href="/api_doc/favicon-16x16.png" sizes="16x16"/>
