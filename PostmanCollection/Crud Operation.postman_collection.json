@@ -1,0 +1,1048 @@
+{
+	"info": {
+		"_postman_id": "781e79b8-d947-4878-b49b-54c2122d699f",
+		"name": "Crud Operation",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7656489",
+		"_collection_link": "https://reformedtech.postman.co/workspace/POS-API~ea5ca1f5-c880-4649-a18e-e99b3762f7d7/collection/7656489-781e79b8-d947-4878-b49b-54c2122d699f?action=share&source=collection_link&creator=7656489"
+	},
+	"item": [
+		{
+			"name": "Bookshelves",
+			"item": [
+				{
+					"name": "Store Bookshelves",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Self no 2\",\n    \"location\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/bookshelves",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"bookshelves"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Bookshelves",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Self no 1\",\n    \"location\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/bookshelves/1",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"bookshelves",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get One Bookshelves",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/bookshelves/2",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"bookshelves",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Bookshelves",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/bookshelves",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"bookshelves"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Bookshelf",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Self no 2\",\n    \"location\": \"Lorem Ipsum is simply dummy text of the printing and typesetting industry. \"\n}"
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/bookshelves/2",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"bookshelves",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Store Books",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookshelf_id\": 1,\n    \"title\": \"Lorem Ipsum is simply dummy text \",\n    \"author\": \"Pranto\",\n    \"published_year\": 2024\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/books",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Books",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"bookshelf_id\": 1,\n    \"title\": \"Lorem Ipsum is simply dummy text  1\",\n    \"author\": \"Pranto\",\n    \"published_year\": 2024\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/books/1",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"books",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one books",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/books/2",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"books",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get books",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/books?q=Lorem",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"books"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Lorem"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Books",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/search-books?q=Pranto",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"search-books"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Pranto"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Book",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/books/1",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"books",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Chapter",
+			"item": [
+				{
+					"name": "Store Chapter",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book_id\": 2,\n    \"title\": \"Lorem Ipsum is simply dummy text \",\n    \"chapter_number\": 123\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/chapters",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"chapters"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Chapter",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"book_id\": 2,\n    \"title\": \"Lorem Ipsum is simply dummy text \",\n    \"chapter_number\": 123\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/chapters/1",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"chapters",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one Chapters",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/chapters/2",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"chapters",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get chapters",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/chapters?q=Lorem",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"chapters"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Lorem"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get chapters  page content",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/chapters-page-content?q=Lorem",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"chapters-page-content"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "Lorem"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Chapters",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/chapters/1",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"chapters",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pages",
+			"item": [
+				{
+					"name": "Store Page",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"chapter_id\": 2,\n    \"content\": \"Lorem Ipsum is simply dummy text \",\n    \"page_number\": 123\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/pages",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"pages"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pages",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"chapter_id\": 2,\n    \"content\": \"Lorem Ipsum is simply dummy text \",\n    \"page_number\": 123\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/pages/1",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"pages",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get one Pages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/pages/2",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"pages",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get pages",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/pages?q=1",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"pages"
+							],
+							"query": [
+								{
+									"key": "q",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Chapters",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "X-Authorization",
+								"value": "Xho7Po7oohoj0suCaaZXR0Wom9cx8foVZ5fuhVDfU5IGpPPl08K2xmZ6cf8U1dIs",
+								"type": "text"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{FOLDER_URL}}/pages/1",
+							"host": [
+								"{{FOLDER_URL}}"
+							],
+							"path": [
+								"pages",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "FOLDER_URL",
+			"value": "https://library-content-management.pranto.dev/api",
+			"type": "string"
+		}
+	]
+}
