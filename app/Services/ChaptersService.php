@@ -2,35 +2,33 @@
 
 namespace App\Services;
 
-use App\Models\Book;
+use App\Models\Chapter;
 use Illuminate\Pagination\LengthAwarePaginator;
 
-class BooksService extends BaseService
+class ChaptersService extends BaseService
 {
     /**
-     * @param Book $book
+     * @param Chapter $chapter
      */
-    public function __construct(Book $book)
+    public function __construct(Chapter $chapter)
     {
-        $this->model = $book;
+        $this->model = $chapter;
     }
 
     /**
      * @return LengthAwarePaginator
      */
-    public function getBooks(): LengthAwarePaginator
+    public function getChapters(): LengthAwarePaginator
     {
         return $this->model
             ->query()
-            ->with(['bookShelf:id,name'])
+            ->with(['book:id,title'])
             ->select([
-                'id', 'bookshelf_id', 'title', 'author', 'published_year'
+                'book_id', 'title', 'chapter_number'
             ])
             ->when(
                 request()->filled('q'), fn($query) => $query
                 ->where('title', 'like', '%' . request('q') . '%')
-                ->orWhere('author', 'like', '%' . request('q') . '%')
-                ->orWhere('published_year', 'like', '%' . request('q') . '%')
             )
             ->orderBy('id', 'desc')
             ->paginate(request('per_page', self::DEFAULT_LIMIT));
