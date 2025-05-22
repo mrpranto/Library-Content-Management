@@ -1,14 +1,14 @@
 {
     "swagger": "2.0",
     "info": {
-        "description": "POS - Api Documentation",
+        "description": "Library Content Management - Api Documentation",
         "title": "Library Content Management - Api Documentation",
         "termsOfService": "https://pranto.dev",
         "contact": {
             "email": "prantoabir1@gmail.com"
         }
     },
-    "host": "localhost:8000",
+    "host": "library-content-management.pranto.dev",
     "basePath": "/api",
     "schemes": [
         "http",
