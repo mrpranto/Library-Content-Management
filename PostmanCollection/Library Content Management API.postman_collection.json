@@ -1,10 +1,9 @@
 {
 	"info": {
-		"_postman_id": "781e79b8-d947-4878-b49b-54c2122d699f",
-		"name": "Crud Operation",
+		"_postman_id": "af2c2180-9deb-4a52-b1bc-8afd4ea11749",
+		"name": "Library Content Management API",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "7656489",
-		"_collection_link": "https://reformedtech.postman.co/workspace/POS-API~ea5ca1f5-c880-4649-a18e-e99b3762f7d7/collection/7656489-781e79b8-d947-4878-b49b-54c2122d699f?action=share&source=collection_link&creator=7656489"
+		"_exporter_id": "7196377"
 	},
 	"item": [
 		{
