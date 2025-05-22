@@ -15,14 +15,14 @@
         "https"
     ],
     "paths": {
-        "/products": {
+        "/bookshelves": {
             "get": {
                 "tags": [
-                    "Products"
+                    "Bookshelves"
                 ],
-                "summary": "Product list",
-                "description": "Getting product list with relational data.",
-                "operationId": "products",
+                "summary": "Bookshelves list",
+                "description": "Getting Bookshelves list with relational data.",
+                "operationId": "Bookshelves",
                 "consumes": [
                     "application/x-www-form-urlencoded"
                 ],
@@ -32,130 +32,76 @@
                 "parameters": [
                     {
                         "in": "query",
-                        "name": "id",
-                        "description": "id",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "createdByUserId",
-                        "description": "createdByUserId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "categoryId",
-                        "description": "categoryId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "subCategoryId",
-                        "description": "subCategoryId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "companyId",
-                        "description": "companyId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "brandId",
-                        "description": "brandId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "branchId",
-                        "description": "branchId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "query",
+                        "name": "q",
+                        "description": "query values",
                         "required": false,
                         "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
                     },
-                    {
-                        "in": "query",
-                        "name": "acceptWithoutStock",
-                        "description": "acceptWithoutStock",
-                        "required": false,
-                        "enum": ["1"],
-                        "type": "number"
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
                     },
-                    {
-                        "in": "query",
-                        "name": "sku",
-                        "description": "sku",
-                        "required": false,
-                        "type": "string"
+                    "422": {
+                        "description": "Unprocess Request / When Error occured",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
                     },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
                     {
-                        "in": "query",
-                        "name": "barcode",
-                        "description": "barcode",
-                        "required": false,
-                        "type": "string"
-                    },
+                        "X-Authorization": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Bookshelves"
+                ],
+                "summary": "Store Bookshelves",
+                "description": "Store Bookshelves.",
+                "operationId": "BookshelvesStore",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
                     {
-                        "in": "query",
-                        "name": "order_by",
-                        "description": "order_by",
-                        "enum": [
-                            "id",
-                            "createdByUserId",
-                            "companyId",
-                            "categoryId",
-                            "subCategoryId",
-                            "brandId",
-                            "unitId",
-                            "discountId",
-                            "isDiscountApplicable",
-                            "taxId",
-                            "name",
-                            "genericName",
-                            "selfNumber",
-                            "barcode",
-                            "description",
-                            "status",
-                            "alertQuantity",
-                        ],
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order_direction",
-                        "description": "order_direction",
-                        "required": false,
-                        "enum": ["asc", "desc"],
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "per_page",
-                        "description": "per_page",
-                        "required": false,
-                        "type": "number",
-                        "maximum": 100
-                    },
-                    {
-                        "in": "query",
-                        "name": "page",
-                        "description": "page",
-                        "required": false,
-                        "type": "number",
+                        "in": "body",
+                        "name": "body",
+                        "description": "Bookshelves object body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Self no 2"
+                                },
+                                "location": {
+                                    "type": "string",
+                                    "example": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                }
+                            }
+                        }
                     }
                 ],
                 "responses": {
@@ -191,16 +137,16 @@
                 ]
             }
         },
-        "/products/{product_id}": {
+        "/bookshelves/{bookshelf_id}": {
             "get": {
                 "tags": [
-                    "Products"
+                    "Bookshelves"
                 ],
-                "summary": "Single Product",
-                "description": "Getting product with relational data.",
-                "operationId": "singleProduct",
+                "summary": "Single Bookshelves",
+                "description": "Getting Bookshelves with relational data.",
+                "operationId": "singleBookshelves",
                 "consumes": [
-                    "application/x-www-form-urlencoded"
+                    "application/json"
                 ],
                 "produces": [
                     "application/json"
@@ -208,8 +154,8 @@
                 "parameters": [
                     {
                         "in": "path",
-                        "name": "product_id",
-                        "description": "product_id",
+                        "name": "bookshelf_id",
+                        "description": "bookshelf_id",
                         "required": true,
                         "type": "number"
                     }
@@ -245,365 +191,144 @@
                         "X-Authorization": []
                     }
                 ]
-            }
-        },
-
-        "/orders": {
-            "get": {
-                "tags": [
-                    "Orders"
-                ],
-                "summary": "Order list",
-                "description": "Getting Order list with relational data.",
-                "operationId": "orders",
-                "consumes": [
-                    "application/x-www-form-urlencoded"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "query",
-                        "name": "id",
-                        "description": "id",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "createdByUserId",
-                        "description": "createdByUserId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "companyId",
-                        "description": "companyId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "branchId",
-                        "description": "branchId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "referenceId",
-                        "description": "referenceId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "salePersonId",
-                        "description": "salePersonId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "customerId",
-                        "description": "customerId",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "couponId",
-                        "description": "couponId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "invoice",
-                        "description": "invoice",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "terminal",
-                        "description": "terminal",
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "amount",
-                        "description": "amount",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "tax",
-                        "description": "tax",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "discount",
-                        "description": "discount",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "roundOffAmount",
-                        "description": "roundOffAmount",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "shippingCost",
-                        "description": "shippingCost",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "paid",
-                        "description": "paid",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "due",
-                        "description": "due",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "deliveryMethod",
-                        "description": "deliveryMethod",
-                        "required": false,
-                        "type": "string",
-                        "enum": [
-                            "on-spot",
-                            "transfer"
-                        ]
-                    },
-                    {
-                        "in": "query",
-                        "name": "paymentStatus",
-                        "description": "paymentStatus",
-                        "required": false,
-                        "type": "string",
-                        "enum": [
-                            "paid",
-                            "unpaid",
-                            "partial"
-                        ]
-                    },
-                    {
-                        "in": "query",
-                        "name": "status",
-                        "description": "status",
-                        "required": false,
-                        "type": "string",
-                        "enum": [
-                            "delivered",
-                            "pending",
-                            "ordered",
-                            "returned"
-                        ]
-                    },
-                    {
-                        "in": "query",
-                        "name": "updatedByUserId",
-                        "description": "updatedByUserId",
-                        "required": false,
-                        "type": "number"
-                    },
-                    {
-                        "in": "query",
-                        "name": "startDate",
-                        "description": "startDate",
-                        "required": false,
-                        "type": "string",
-                        "format": "Y-m-d"
-                    },
-                    {
-                        "in": "query",
-                        "name": "endDate",
-                        "description": "endDate",
-                        "required": false,
-                        "type": "string",
-                        "format": "Y-m-d"
-                    },
-                    {
-                        "in": "query",
-                        "name": "query",
-                        "description": "query",
-                        "required": false,
-                        "type": "string"
-                    },
-
-
-
-                    {
-                        "in": "query",
-                        "name": "order_by",
-                        "description": "order_by",
-                        "enum": [
-                            "id",
-                            "createdByUserId",
-                            "companyId",
-                            "branchId",
-                            "salePersonId",
-                            "customerId",
-                            "referenceId",
-                            "date",
-                            "terminal",
-                            "invoice",
-                            "tax",
-                            "shippingCost",
-                            "discount",
-                            "roundOffAmount",
-                            "amount",
-                            "profitAmount",
-                            "grossProfit",
-                            "paid",
-                            "due",
-                            "couponId",
-                            "deliveryMethod",
-                            "status",
-                            "paymentStatus"
-                        ],
-                        "required": false,
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "order_direction",
-                        "description": "order_direction",
-                        "required": false,
-                        "enum": ["asc", "desc"],
-                        "type": "string"
-                    },
-                    {
-                        "in": "query",
-                        "name": "per_page",
-                        "description": "per_page",
-                        "required": false,
-                        "type": "number",
-                        "maximum": 100
-                    },
-                    {
-                        "in": "query",
-                        "name": "page",
-                        "description": "page",
-                        "required": false,
-                        "type": "number",
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Data found",
-                        "schema": {
-                            "$ref": "#/definitions/ApiResponse"
-                        }
-                    },
-                    "405": {
-                        "description": "Method not allow",
-                        "schema": {
-                            "$ref": "#/definitions/MethodNotAllow"
-                        }
-                    },
-                    "422": {
-                        "description": "Unprocess Request / When Error occured",
-                        "schema": {
-                            "$ref": "#/definitions/UnProcessRequest"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized request!",
-                        "schema": {
-                            "$ref": "#/definitions/UnauthorizedError"
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "X-Authorization": []
-                    }
-                ]
-            }
-        },
-        "/orders/{order_id}": {
-            "get": {
-                "tags": [
-                    "Orders"
-                ],
-                "summary": "Single Order",
-                "description": "Getting order with relational data.",
-                "operationId": "singleOrder",
-                "consumes": [
-                    "application/x-www-form-urlencoded"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "in": "path",
-                        "name": "order_id",
-                        "description": "order_id",
-                        "required": true,
-                        "type": "number"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Data found",
-                        "schema": {
-                            "$ref": "#/definitions/ApiFindResponse"
-                        }
-                    },
-                    "405": {
-                        "description": "Method not allow",
-                        "schema": {
-                            "$ref": "#/definitions/MethodNotAllow"
-                        }
-                    },
-                    "422": {
-                        "description": "Unprocessable Request / When Error occurred",
-                        "schema": {
-                            "$ref": "#/definitions/UnProcessRequest"
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized request!",
-                        "schema": {
-                            "$ref": "#/definitions/UnauthorizedError"
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "X-Authorization": []
-                    }
-                ]
-            }
-        },
-
-        "/stocks": {
+            },
             "put": {
                 "tags": [
-                    "Stocks"
+                    "Bookshelves"
                 ],
-                "summary": "Stock Update",
-                "operationId": "stocks",
+                "summary": "Update Bookshelves",
+                "description": "Update Bookshelves.",
+                "operationId": "UpdateBookshelves",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "bookshelf_id",
+                        "description": "bookshelf_id",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Bookshelves object body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Self no 2"
+                                },
+                                "location": {
+                                    "type": "string",
+                                    "example": "Lorem Ipsum is simply dummy text of the printing and typesetting industry."
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiFindResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Request / When Error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Bookshelves"
+                ],
+                "summary": "Delete Bookshelves",
+                "description": "Delete Bookshelves.",
+                "operationId": "deleteBookshelves",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "bookshelf_id",
+                        "description": "bookshelf_id",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiFindResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Request / When Error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            }
+        },
+
+        "/books": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Books list",
+                "description": "Getting Books list with relational data.",
+                "operationId": "Books",
                 "consumes": [
                     "application/x-www-form-urlencoded"
                 ],
@@ -612,25 +337,11 @@
                 ],
                 "parameters": [
                     {
-                        "name": "productId",
-                        "in": "formData",
-                        "description": "Specific Product id",
-                        "required": true,
-                        "type": "number"
-                    },
-                    {
-                        "name": "sku",
-                        "in": "formData",
-                        "description": "Specific Product sku",
-                        "required": true,
-                        "type": "number"
-                    },
-                    {
-                        "name": "saleQuantity",
-                        "in": "formData",
-                        "description": "Sale Quantity",
-                        "required": true,
-                        "type": "number"
+                        "in": "query",
+                        "name": "q",
+                        "description": "query values",
+                        "required": false,
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -648,6 +359,899 @@
                     },
                     "422": {
                         "description": "Unprocess Request / When Error occured",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Store Books",
+                "description": "Store Books.",
+                "operationId": "BooksStore",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Books object body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "bookshelf_id": {
+                                    "type": "number",
+                                    "example": "1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "example": "Lorem Ipsum is simply dummy text"
+                                },
+                                "author": {
+                                    "type": "string",
+                                    "example": "Pranto"
+                                },
+                                "published_year": {
+                                    "type": "number",
+                                    "example": "2024"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocess Request / When Error occured",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            }
+        },
+        "/books/{book_id}": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Single Books",
+                "description": "Getting Books with relational data.",
+                "operationId": "singleBooks",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "book_id",
+                        "description": "book_id",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiFindResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Request / When Error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Update Books",
+                "description": "Update Books.",
+                "operationId": "UpdateBooks",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "books_id",
+                        "description": "books_id",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Books object body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "bookshelf_id": {
+                                    "type": "number",
+                                    "example": "1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "example": "Lorem Ipsum is simply dummy text"
+                                },
+                                "author": {
+                                    "type": "string",
+                                    "example": "Pranto"
+                                },
+                                "published_year": {
+                                    "type": "number",
+                                    "example": "2024"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiFindResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Request / When Error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Delete Books",
+                "description": "Delete Books.",
+                "operationId": "deleteBooks",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "books_id",
+                        "description": "books_id",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiFindResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Request / When Error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            }
+        },
+
+        "/chapters": {
+            "get": {
+                "tags": [
+                    "Chapters"
+                ],
+                "summary": "Chapters list",
+                "description": "Getting Chapters list with relational data.",
+                "operationId": "Chapters",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "q",
+                        "description": "query values",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocess Request / When Error occured",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Chapters"
+                ],
+                "summary": "Store Chapters",
+                "description": "Store Chapters.",
+                "operationId": "ChaptersStore",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Books object body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "book_id": {
+                                    "type": "number",
+                                    "example": "1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "example": "Lorem Ipsum is simply dummy text"
+                                },
+                                "chapter_number": {
+                                    "type": "number",
+                                    "example": "10"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocess Request / When Error occured",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            }
+        },
+        "/chapters/{chapter_id}": {
+            "get": {
+                "tags": [
+                    "Chapters"
+                ],
+                "summary": "Single Chapters",
+                "description": "Getting Chapters with relational data.",
+                "operationId": "singleChapters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "chapter_id",
+                        "description": "chapter_id",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiFindResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Request / When Error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Chapters"
+                ],
+                "summary": "Update Chapters",
+                "description": "Update Chapters.",
+                "operationId": "UpdateChapters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "chapter_id",
+                        "description": "chapter_id",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Books object body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "book_id": {
+                                    "type": "number",
+                                    "example": "1"
+                                },
+                                "title": {
+                                    "type": "string",
+                                    "example": "Lorem Ipsum is simply dummy text"
+                                },
+                                "chapter_number": {
+                                    "type": "number",
+                                    "example": "10"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiFindResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Request / When Error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Chapters"
+                ],
+                "summary": "Delete Chapters",
+                "description": "Delete Chapters",
+                "operationId": "deleteChapters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "chapter_id",
+                        "description": "chapter_id",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiFindResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Request / When Error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            }
+        },
+
+        "/pages": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "Pages list",
+                "description": "Getting Pages list with relational data.",
+                "operationId": "Pages",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "q",
+                        "description": "query values",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocess Request / When Error occured",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            },
+            "post": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "Store Pages",
+                "description": "Store Pages.",
+                "operationId": "PagesStore",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Pages object body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "chapter_id": {
+                                    "type": "number",
+                                    "example": "1"
+                                },
+                                "content": {
+                                    "type": "string",
+                                    "example": "Lorem Ipsum is simply dummy text"
+                                },
+                                "page_number": {
+                                    "type": "number",
+                                    "example": "10"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocess Request / When Error occured",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            }
+        },
+        "/pages/{page_id}": {
+            "get": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "Single Pages",
+                "description": "Getting Pages with relational data.",
+                "operationId": "singlePages",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "page_id",
+                        "description": "page_id",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiFindResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Request / When Error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            },
+            "put": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "Update Chapters",
+                "description": "Update Chapters .",
+                "operationId": "UpdateChapters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "page_id",
+                        "description": "page_id",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "Pages object body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "chapter_id": {
+                                    "type": "number",
+                                    "example": "1"
+                                },
+                                "content": {
+                                    "type": "string",
+                                    "example": "Lorem Ipsum is simply dummy text"
+                                },
+                                "page_number": {
+                                    "type": "number",
+                                    "example": "10"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiFindResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Request / When Error occurred",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            },
+            "delete": {
+                "tags": [
+                    "Pages"
+                ],
+                "summary": "Delete Pages",
+                "description": "Delete Pages",
+                "operationId": "deletePages",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "page_id",
+                        "description": "page_id",
+                        "required": true,
+                        "type": "number"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiFindResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocessable Request / When Error occurred",
                         "schema": {
                             "$ref": "#/definitions/UnProcessRequest"
                         }
