@@ -33,4 +33,23 @@ class ChaptersService extends BaseService
             ->orderBy('id', 'desc')
             ->paginate(request('per_page', self::DEFAULT_LIMIT));
     }
+
+    /**
+     * @return LengthAwarePaginator
+     */
+    public function getChaptersWithPageContent(): LengthAwarePaginator
+    {
+        return $this->model
+            ->query()
+            ->with(['book:id,title', 'pages:id,chapter_id,page_number,content'])
+            ->select([
+               'id', 'book_id', 'title', 'chapter_number'
+            ])
+            ->when(
+                request()->filled('q'), fn($query) => $query
+                ->where('title', 'like', '%' . request('q') . '%')
+            )
+            ->orderBy('id', 'desc')
+            ->paginate(request('per_page', self::DEFAULT_LIMIT));
+    }
 }

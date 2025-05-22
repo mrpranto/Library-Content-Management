@@ -36,6 +36,22 @@ class BookController extends Controller
     }
 
     /**
+     * @return JsonResponse|AnonymousResourceCollection
+     */
+    public function searchBooks(): JsonResponse|AnonymousResourceCollection
+    {
+        try {
+
+            $books = $this->service->searchBooks();
+
+            return BooksResources::collection($books);
+
+        }catch (\Exception $e) {
+            return customErrorResponse($e, $e->getCode());
+        }
+    }
+
+    /**
      * Store a newly created resource in storage.
      */
     public function store(BooksRequest $request): JsonResponse

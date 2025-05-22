@@ -35,4 +35,25 @@ class BooksService extends BaseService
             ->orderBy('id', 'desc')
             ->paginate(request('per_page', self::DEFAULT_LIMIT));
     }
+
+
+    /**
+     * @return LengthAwarePaginator
+     */
+    public function searchBooks(): LengthAwarePaginator
+    {
+        return $this->model
+            ->query()
+            ->with(['bookShelf:id,name'])
+            ->select([
+                'id', 'bookshelf_id', 'title', 'author', 'published_year'
+            ])
+            ->when(
+                request()->filled('q'), fn($query) => $query
+                ->where('title', 'like', '%' . request('q') . '%')
+                ->orWhere('author', 'like', '%' . request('q') . '%')
+            )
+            ->orderBy('id', 'desc')
+            ->paginate(request('per_page', self::DEFAULT_LIMIT));
+    }
 }

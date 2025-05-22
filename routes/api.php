@@ -19,6 +19,7 @@ Route::middleware(['x-auth'])->group(function () {
      * */
 
     Route::apiResource('books', BookController::class);
+    Route::get('search-books', [BookController::class, 'searchBooks']);
 
     /*
      * Chapter Api Routes.
@@ -26,6 +27,7 @@ Route::middleware(['x-auth'])->group(function () {
      * */
 
     Route::apiResource('chapters', ChapterController::class);
+    Route::get('chapters-page-content', [ChapterController::class, 'chapterPageContent']);
 
     /*
     * Pages Api Routes.

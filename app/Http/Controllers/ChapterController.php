@@ -8,6 +8,7 @@ use App\Models\Chapter;
 use App\Services\ChaptersService;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class ChapterController extends Controller
 {
@@ -19,11 +20,27 @@ class ChapterController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): JsonResponse|AnonymousResourceCollection
     {
         try {
 
             $chapters = $this->service->getChapters();
+
+            return ChaptersResources::collection($chapters);
+
+        }catch (\Exception $e) {
+            return customErrorResponse($e, $e->getCode());
+        }
+    }
+
+    /**
+     * @return JsonResponse|AnonymousResourceCollection
+     */
+    public function chapterPageContent(): JsonResponse|AnonymousResourceCollection
+    {
+        try {
+
+            $chapters = $this->service->getChaptersWithPageContent();
 
             return ChaptersResources::collection($chapters);
 
