@@ -451,6 +451,63 @@
                 ]
             }
         },
+
+        "/search-books": {
+            "get": {
+                "tags": [
+                    "Books"
+                ],
+                "summary": "Books list search by title or author",
+                "description": "Getting Books list with relational data.",
+                "operationId": "BooksSearch",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "q",
+                        "description": "query values",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocess Request / When Error occured",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            }
+        },
         "/books/{book_id}": {
             "get": {
                 "tags": [
@@ -734,6 +791,62 @@
                                 }
                             }
                         }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Data found",
+                        "schema": {
+                            "$ref": "#/definitions/ApiResponse"
+                        }
+                    },
+                    "405": {
+                        "description": "Method not allow",
+                        "schema": {
+                            "$ref": "#/definitions/MethodNotAllow"
+                        }
+                    },
+                    "422": {
+                        "description": "Unprocess Request / When Error occured",
+                        "schema": {
+                            "$ref": "#/definitions/UnProcessRequest"
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized request!",
+                        "schema": {
+                            "$ref": "#/definitions/UnauthorizedError"
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "X-Authorization": []
+                    }
+                ]
+            }
+        },
+        "/chapters-page-content": {
+            "get": {
+                "tags": [
+                    "Chapters"
+                ],
+                "summary": "Chapters list with page and content",
+                "description": "Getting Chapters list with relational data.",
+                "operationId": "ChaptersWithPages",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "q",
+                        "description": "query values",
+                        "required": false,
+                        "type": "string"
                     }
                 ],
                 "responses": {
